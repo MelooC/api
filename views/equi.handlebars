@@ -1,0 +1,38 @@
+  <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Cool</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/css/estiloproductos.css">
+</head>
+{{> navbar}}
+                <div class="d-flex justify-content-center align-items-center mb-3">
+    <section class="col-md-9 text-center">
+        <h3>EQUIPAMIENTO</h3>
+        <img src="/Imagenes/BANER EQUIPAMIENTO.png" alt="Accesorios" class="img-fluid mb-4">
+    </section>
+</div>
+
+<div class="row">
+          {{#each lista}}
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <img src="{{this.foto}}" class="card-img-top" alt="SET MOTOR GRIP C/TAPA M4 BK">
+                            <div class="card-body">
+                                <h5 class="card-title">{{this.name}}</h5>
+                                <p class="card-text">${{this.price}}</p>
+                                <form action="/carrito/add" method="post">
+                                <input type="hidden" name="prod_id" value="{{this.id}}"> <!-- Cambia 123 por el ID real del producto -->
+                                <input type="hidden" name="quantiti" value="1"> <!-- Cambia 1 por la cantidad deseada -->
+                                <button type="submit" class="btn btn-primary">Agregar al carrito</button>
+                                </form>
+                                <div class="card__description">{{this.descr}}</div>
+                            </div>
+                        </div>
+                    </div>
+{{/each}}
+    </section>
+
+{{> footer}}
